@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .video-container {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Đang xử lý video</h1>
+    
+    <div class="video-container">
+        <img src="{{ url_for('video_feed', video_file=video_file) }}" width="800">
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-box">
+            <h3>Xe máy</h3>
+            <p id="motorcycle-count">0</p>
+        </div>
+        <div class="stat-box">
+            <h3>Ô tô</h3>
+            <p id="car-count">0</p>
+        </div>
+        <div class="stat-box">
+            <h3>Xe tải</h3>
+            <p id="truck-count">0</p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="window.location.href='/'">Quay lại</button>
+        <button onclick="downloadStats()">Tải xuống thống kê</button>
+    </div>
+
+    <script>
+        // Cập nhật số liệu mỗi giây
+        setInterval(function() {
+            fetch('/get_stats')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('motorcycle-count').textContent = data.motorcycle;
+                    document.getElementById('car-count').textContent = data.car;
+                    document.getElementById('truck-count').textContent = data.truck;
+                });
+        }, 1000);
+
+        function downloadStats() {
+            window.location.href = '/download_stats';
+        }
+    </script>
+</body>
+</html>

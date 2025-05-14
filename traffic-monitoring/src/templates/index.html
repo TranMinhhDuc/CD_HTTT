@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .upload-container {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .video-list {
+            margin: 20px 0;
+        }
+        .video-item {
+            padding: 10px;
+            border: 1px solid #eee;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .video-item:hover {
+            background-color: #f5f5f5;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Traffic Monitoring System</h1>
+    
+    <div class="upload-container">
+        <h2>Tải lên video mới</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="video" accept="video/*" required>
+            <button type="submit">Tải lên</button>
+        </form>
+    </div>
+
+    <div class="video-list">
+        <h2>Danh sách video</h2>
+        {% if video_files %}
+            {% for video in video_files %}
+            <div class="video-item">
+                <form action="/process_video" method="post">
+                    <input type="hidden" name="video_file" value="{{ video }}">
+                    {{ video }}
+                    <button type="submit">Xử lý</button>
+                </form>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Chưa có video nào.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

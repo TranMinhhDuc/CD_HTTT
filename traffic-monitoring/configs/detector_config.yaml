@@ -1,0 +1,12 @@
+model:
+  path: "yolov8n.pt"
+  confidence: 0.25
+  classes:
+    - motorcycle
+    - car 
+    - truck
+
+video:
+  width: 1280
+  height: 720
+  fps: 30

@@ -59,9 +59,9 @@ class TrafficMonitor:
 
 if __name__ == "__main__":
     # Đường dẫn tuyệt đối đến các file
-    video_path = r"C:\Users\Admin\Downloads\Tracking camera\traffic-monitoring\data\video.mp4"  # Thay đổi path tới video của bạn
-    model_path = r"C:\Users\Admin\Downloads\Tracking camera\traffic-monitoring\yolov8n.pt"
-    config_path = r"C:\Users\Admin\Downloads\Tracking camera\traffic-monitoring\configs\tracker_config.yaml"
+    video_path = r"E:\\CD_HTTT\\test\\CameraTracking\\traffic-monitoring\\uploads\\videoplayback_7.mp4"  # Thay đổi path tới video của bạn
+    model_path = r"E:\\CD_HTTT\\test\\CameraTracking\\traffic-monitoring\\yolov8n.pt"
+    config_path = r"E:\\CD_HTTT\\test\\CameraTracking\\traffic-monitoring\\configs\\tracker_config.yaml"
     
     print("Khởi tạo chương trình...")
     

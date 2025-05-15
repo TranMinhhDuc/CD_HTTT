@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 # Cấu hình upload
 app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # giới hạn 16MB
+app.config['MAX_CONTENT_LENGTH'] = 16 * 102400 * 102400  # giới hạn 16MB
 app.config['ALLOWED_EXTENSIONS'] = {'mp4', 'avi', 'mov'}
 
 # Đảm bảo thư mục uploads tồn tại

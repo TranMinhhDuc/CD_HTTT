@@ -4,7 +4,7 @@ from tracking.deepsort_tracker import DeepSortTracker
 from utils.helper import get_counting_line
 
 def main():
-    video_path = "E:\\CD_HTTT\\test\\CameraTracking\\traffic-monitoring\\uploads\\videotest2.mp4"
+    video_path = "E:\\CD_HTTT\\test\\CameraTracking\\traffic-monitoring\\uploads\\videoplayback_7.mp4"
 
     detector = YoloDetector()
     tracker = DeepSortTracker()
